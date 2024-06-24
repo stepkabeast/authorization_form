@@ -1,0 +1,22 @@
+.IP {
+	font-family: 'Arial', sans-serif;
+	font-size: 1.2em;
+	color: #333;
+	background-color: #f4f4f9;
+	padding: 15px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	margin: 20px;
+	text-align: center;
+}
+
+.IP::before {
+	content: '🌐 ';
+	font-size: 1.5em;
+	vertical-align: middle;
+}
+
+.IP span {
+	color: #0073e6;
+	font-weight: bold;
+}
