@@ -39,4 +39,3 @@ function check_auth(): bool
 {
     return !!($_SESSION['user_id'] ?? false);
 }
-//asdasdas
