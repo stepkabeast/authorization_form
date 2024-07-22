@@ -1,11 +1,15 @@
 <?php
-
 require_once __DIR__.'/boot.php';
 
-if (check_auth()) {
+SessionManager::start();
+
+if (AuthManager::checkAuth()) {
     header('Location: /do_register.php');
     die;
 }
+
+$username = SessionManager::get('username', '');
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,12 +28,13 @@ if (check_auth()) {
 
       <h1 class="mb-5">Login</h1>
 
-        <?php flash() ?>
+      <?php SessionManager::flash(); ?>
 
       <form method="post" action="do_login.php">
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
-          <input type="text" class="form-control" id="username" name="username" required>
+          <input type="text" class="form-control" id="username" name="username" required value="<?php echo htmlspecialchars($username); ?>">
+        </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
           <input type="password" class="form-control" id="password" name="password" required>
@@ -46,3 +51,7 @@ if (check_auth()) {
 
 </body>
 </html>
+
+<?php
+SessionManager::remove('username');
+?>
